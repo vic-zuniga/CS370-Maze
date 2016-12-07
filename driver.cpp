@@ -12,12 +12,12 @@
 
 using namespace std;
 
-float GEX = 10.0;
-float GEY = 0.5;
-float GEZ = 10.0;
-float GLX = 0.0;
+float GEX = 50.0;
+float GEY = 50.0;
+float GEZ = 50.0;
+float GLX = 20.0;
 float GLY = 0.0;
-float GLZ = 0.0;
+float GLZ = 20.0;
 float GUX = 0.0;
 float GUY = 1.0;
 float GUZ = 0.0;
@@ -89,8 +89,8 @@ void myDisplay(void)
   // set the camera
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  double winHt = 1.0; // half-height of the window
-  glOrtho(-winHt*64/48, winHt*64/48.0, -winHt, winHt, 0.1, 100.0);
+  double winHt = 30.0; // half-height of the window
+  glOrtho(-winHt*64/48, winHt*64/48, -winHt*64/48, winHt*64/48, 0.1, 1000.0);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   gluLookAt(GEX, GEY, GEZ, GLX, GLY, GLZ, GUX, GUY, GUZ);
@@ -100,7 +100,7 @@ void myDisplay(void)
   /*if(INIT == true)*/ generateSpace(); //draw walls
   INIT = false;
   
-  //draw floor
+  /*draw floor
   glPushMatrix();
   glScaled(MAX_X, 0.0, MAX_Z);
   wall(0.1);
@@ -181,12 +181,14 @@ int main(int argc, char **argv)
   glutInitWindowSize(640,480);
   glutInitWindowPosition(100, 100);
   glutCreateWindow("Maze Final Project");
-  glutDisplayFunc(myDisplay);
+  //glutDisplayFunc(myDisplay);
   glEnable(GL_LIGHTING); // enable the light source
   glEnable(GL_LIGHT0);
+  glutDisplayFunc(myDisplay);
   glShadeModel(GL_SMOOTH);
   glEnable(GL_DEPTH_TEST); // for hidden surface removal
   glEnable(GL_NORMALIZE); // normalize vectors for proper shading
+  //glutDisplayFunc(myDisplay);
   glClearColor(0.1f,0.1f,0.1f,0.0f); // background is light gray
   glViewport(0, 0, 640, 480);
   glutKeyboardFunc(myKeyboard);
