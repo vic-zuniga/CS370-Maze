@@ -99,8 +99,8 @@ void myDisplay(void)
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT); // clear the screen
   /*if(INIT == true)*/ generateSpace(); //draw walls
   INIT = false;
-  
-  /*draw floor
+
+  //draw floor
   glPushMatrix();
   glScaled(MAX_X, 0.0, MAX_Z);
   wall(0.1);
